@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
 const viewRoutes = require('./routes/views');
-// const apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/api-routes');
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('tiny'));
 // Route requirements
 app.use('/', viewRoutes);
-// app.use('/api', apiRoutes);
+app.use('/api', apiRoutes);
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fitnessTrackDB', { useNewUrlParser: true });
