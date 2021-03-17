@@ -1,29 +1,48 @@
+const { Workout } = require('../models');
+const db = require('../models');
 const router = require('express').Router();
-const Workout = require('../models/Workout')
+// GET
 
-// GET all workouts (view all workouts)
-router.get('/api/workouts', async (req, res) => {
+router.get('/workouts', async (req, res) => {
     try {
         const viewWorkouts = await Workout.find();
-        res.json(viewWorkouts);
+        res.json(viewWorkouts)
     } catch (err) {
-        res.status(400);
-        res.send(`Error Message: ${err}`);
+        res.status(500).json({ message: err.message })
     }
 });
 
-router.get('/api/workouts/range', async (req, res) => {
+router.get('/workouts/range', async (req, res) => {
     try {
-        const range = await Workout.find().limit(7);
-        res.json(range);
+        const workoutRange = await Workout.find({}). limit(7);
+        res.json(workoutRange);
     } catch (err) {
-        res.status(400);
-        res.send(`Error Message: ${err}`);
+        res.status(500).json({ message: err.message })
     }
 });
-
-router.post('/api/workouts', (req, res) => {
-    
+// POST
+router.post('/workouts', async (req, res) => {
+    try {
+        const newWorkout = await Workout.create({});
+        res.json(newWorkout);
+        res.status(201).json(newWorkout)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+  });
+// PUT
+router.put('/workouts/:id', async (req, res) => {
+    try {
+        const updateWorkout = await res.workout.findByIdAndUpdate(
+            req.params.id,
+            {$push:{
+                exercises: req.body
+            }}
+        );
+        res.json(updateWorkout);
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 });
 
 module.exports = router;

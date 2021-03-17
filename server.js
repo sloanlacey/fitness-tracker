@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const path = require('path');
+// const path = require('path');
 const viewRoutes = require('./routes/views');
 const apiRoutes = require('./routes/api-routes');
 
@@ -9,16 +9,17 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('public'));
+
 // Route requirements
 app.use('/', viewRoutes);
 app.use('/api', apiRoutes);
-
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true });
 
 mongoose.connection.on('error', (err) =>
   console.log(`error in mongoose conneciton: ${err.message}`)
