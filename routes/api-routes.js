@@ -1,14 +1,20 @@
 const { Workout } = require('../models');
-const db = require('../models');
+// const db = require('../models');
 const router = require('express').Router();
 // GET
 router.get('/workouts', async (req, res) => {
-    try {
-        const viewWorkouts = await Workout.find();
-        res.json(viewWorkouts)
-    } catch (err) {
-        res.status(500).json({ message: err.message })
-    }
+    const viewWorkouts = await Workout.aggregate([{
+        $addFields: {
+            workoutDuration: { $sum: '$exercises.duration' },
+        }
+    }]);
+    res.json(viewWorkouts);
+    // try {
+    //     const viewWorkouts = await Workout.find();
+    //     res.json(viewWorkouts)
+    // } catch (err) {
+    //     res.status(500).json({ message: err.message })
+    // }
 });
 // GET
 router.get('/workouts/range', async (req, res) => {
@@ -35,17 +41,6 @@ router.put('/workouts/:id', async (req, res) => {
         .then(workout => {
             res.json(workout);
         })
-    // try {
-    //     const updateWorkout = await res.workout.findByIdAndUpdate(
-    //         req.params.id,
-    //         {$push:{
-    //             exercises: req.body
-    //         }}
-    //     );
-    //     res.json(updateWorkout);
-    // } catch (err) {
-    //     res.status(400).json({ message: err.message })
-    // }
 });
 
 module.exports = router;
