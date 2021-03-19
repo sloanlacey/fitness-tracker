@@ -57,7 +57,7 @@ This project was created with:
 
 ## Summary
 
-- 
+- This application was designed to be a lifestyle tool for health conscious users who want to track and compile workouts and view the collected data of their exercise routines. Users can add exercises, update them, and then view their personal dashboard with graphical representations of their efforts.
 
 ## Author
 
