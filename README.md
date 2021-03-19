@@ -9,7 +9,7 @@ This application uses an Express server, MongoDB to store data, and is deployed 
 ## Table of contents
 
 - [General Info](#general-info)
-- [Home](#home)
+- [Home Page](#home-page)
 - [Fitness Dashboard](#fitness-dashboard)
 - [Usage Instructions](#usage-instructions)
 - [Technologies](#technologies)
@@ -22,11 +22,11 @@ This application is deployed [here](#) on heroku.
 
 ## Home Page
 
-![Home](#)
+![Home](https://github.com/sloanlacey/fitness-tracker/blob/main/public/images/home.png)
 
 ## Fitness Dashboard
 
-![Fitness Dashboard](#)
+![Fitness Dashboard](https://github.com/sloanlacey/fitness-tracker/blob/main/public/images/dashboard.png)
 
 ## Usage Instructions
 
