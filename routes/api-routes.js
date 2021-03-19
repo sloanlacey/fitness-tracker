@@ -6,9 +6,10 @@ router.get('/workouts', async (req, res) => {
     console.log('We hit this duration route!');
     const viewWorkouts = await Workout.aggregate([{
         $addFields: {
-            workoutDuration: { $sum: '$exercises.duration' },
+            totalDuration: { $sum: '$exercises.duration' },
         }
     }]);
+    console.log(viewWorkouts);
     res.json(viewWorkouts);
 });
 
@@ -17,9 +18,10 @@ router.get('/workouts/range', async (req, res) => {
     console.log('We hit this range route!');
   const workoutRange = await Workout.aggregate([{
       $addFields: {
-          workoutDuration: { $sum: '$exercises.duration' },
+          totalDuration: { $sum: '$exercises.duration' },
       }
   }]).limit(7);
+  console.log(workoutRange);
   res.json(workoutRange);
 });
 
