@@ -9,6 +9,7 @@ This application uses an Express server, MongoDB to store data, and is deployed 
 ## Table of contents
 
 - [General Info](#general-info)
+- [Home](#home)
 - [Fitness Dashboard](#fitness-dashboard)
 - [Usage Instructions](#usage-instructions)
 - [Technologies](#technologies)
@@ -19,13 +20,17 @@ This application uses an Express server, MongoDB to store data, and is deployed 
 
 This application is deployed [here](#) on heroku.
 
-## Fitness Dashbaord
+## Home Page
+
+![Home](#)
+
+## Fitness Dashboard
 
 ![Fitness Dashboard](#)
 
 ## Usage Instructions
 
-![Demo](#)
+Demo video coming soon!
 
 ## Technologies
 
