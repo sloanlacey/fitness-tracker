@@ -27,7 +27,7 @@ This application is deployed [here](#) on heroku.
 
 ## New Exercises
 
-![New Exercises](#)
+![New Exercises](https://github.com/sloanlacey/fitness-tracker/blob/main/public/images/new.png)
 
 ## Fitness Dashboard
 
